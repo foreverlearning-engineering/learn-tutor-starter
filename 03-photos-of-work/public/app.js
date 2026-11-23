@@ -1,4 +1,4 @@
-// The chat page. It talks only to your own server (/api/turn), never to Learn directly.
+// The chat page. It talks only to your own server (/api/turn and /api/upload), never to Learn directly.
 const messages = document.querySelector('#messages');
 const form = document.querySelector('#composer');
 const input = document.querySelector('#message');

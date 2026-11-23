@@ -77,8 +77,8 @@ const IMAGE_TYPES = ['image/png', 'image/jpeg', 'image/webp'];
 async function upload(request: IncomingMessage, response: ServerResponse) {
   const learner = learnerId(request, response);
   const { media_type, data, filename } = await readJson(request, 12_000_000);
-  if (typeof media_type !== 'string' || !IMAGE_TYPES.includes(media_type) || typeof data !== 'string' || !data || data.length > 11_200_000) {
-    response.writeHead(400, { 'Content-Type': 'application/json' }).end(JSON.stringify({ error: 'Attach a PNG, JPEG or WebP photo up to 8 MB.' }));
+  if (typeof media_type !== 'string' || !IMAGE_TYPES.includes(media_type) || typeof data !== 'string' || !data || data.length > 11_184_812) {
+    response.writeHead(400, { 'Content-Type': 'application/json' }).end(JSON.stringify({ error: 'Attach a PNG, JPEG or WebP photo up to 8 MiB.' }));
     return;
   }
   try {
