@@ -136,7 +136,8 @@ form.addEventListener('submit', async (submit) => {
         );
         item.append(meta);
       } else if (event === 'failed') {
-        said.textContent = 'That turn did not go through (' + data.code + '). ' + data.message;
+        // Your app's own words (from the server); Learn's error text stays in the server log.
+        said.textContent = data.message;
         item.classList.add('error');
       }
       item.scrollIntoView({ block: 'end' });

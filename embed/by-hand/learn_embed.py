@@ -61,7 +61,7 @@ def send_turn(user_id, message):
     session_id = SESSIONS[learner]
     body = {"session_id": session_id, "prompt": message, "posture": "guided",
             "quest": {"operation": "turn", "requested_support": "auto", "team_dialog": False}}
-    request_id = safety = quest = commercial = None
+    request_id = safety = receipt_event = commercial = None
     with _post(learner, "/chat", body) as response:
         data = []
         for raw in response:
@@ -80,14 +80,14 @@ def send_turn(user_id, message):
             elif kind == "safety_status":
                 safety = event
             elif kind == "quest_receipt":
-                quest = event["receipt"]
+                receipt_event = event["receipt"]
             elif kind == "done":
                 commercial = event["commercial"]
             elif kind == "error":
                 raise LearnError(f"{event['code']}: {event['message']} (request {event['request_id']})")
-    if not commercial or commercial["request_id"] != request_id or not safety or not quest:
+    if not commercial or commercial["request_id"] != request_id or not safety or not receipt_event:
         raise LearnError(f"The turn was not confirmed. Look it up with GET /v1/requests/{request_id}, as the same learner (X-User-Id), before sending again.")
-    receipt = {"request_id": request_id, "session_id": session_id, "learner_id": learner, "posture": quest["posture"],
+    receipt = {"request_id": request_id, "session_id": session_id, "learner_id": learner, "posture": receipt_event["posture"],
                "safety_level": safety["level"], "billable_units": commercial["billable_units"],
                "charge_micro_usd": commercial["charge"]["amount_micro_usd"], "settlement": commercial["settlement"]}
     with open("receipts.jsonl", "a", encoding="utf-8") as kept:

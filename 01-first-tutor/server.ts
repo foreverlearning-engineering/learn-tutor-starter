@@ -41,6 +41,14 @@ async function readJson(request: IncomingMessage): Promise<Record<string, unknow
   return JSON.parse(raw || '{}');
 }
 
+// What the learner sees when a request fails: your app's own short words. Learn's own message is
+// for you, in the server log with the request id; never show it to the learner.
+function forLearner(e: LearnError): string {
+  if (e.code === 'DEVELOPER_POLICY_BLOCKED') return "I can't help with that message. Try asking another way.";
+  if (e.status === 429) return 'The tutor is busy right now. Try again in a moment.';
+  return "That didn't go through. Try again in a moment.";
+}
+
 function send(response: ServerResponse, event: string, data: unknown) {
   response.write('event: ' + event + '\ndata: ' + JSON.stringify(data) + '\n\n');
 }
@@ -66,7 +74,7 @@ async function turn(request: IncomingMessage, response: ServerResponse) {
   } catch (error) {
     const e = error instanceof LearnError ? error : new LearnError(500, 'SERVER_ERROR', (error as Error).message);
     console.error('Learn turn failed:', e.status, e.code, e.message, e.requestId ? 'request ' + e.requestId : '');
-    send(response, 'failed', { status: e.status, code: e.code, message: e.message, request_id: e.requestId });
+    send(response, 'failed', { status: e.status, code: e.code, message: forLearner(e), request_id: e.requestId });
   }
   response.end();
 }
