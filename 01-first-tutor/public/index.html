@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My first tutor</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="chat">
+    <header>
+      <h1>My first tutor</h1>
+      <p>Ask for help with a problem. You get a hint, not the answer.</p>
+    </header>
+    <ol id="messages" aria-live="polite"></ol>
+    <form id="composer">
+      <label for="message" class="visually-hidden">Your message</label>
+      <textarea id="message" name="message" rows="2" placeholder="Type your question" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </main>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>

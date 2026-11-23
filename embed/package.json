@@ -1,0 +1,14 @@
+{
+  "name": "practice-pad",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A small practice product with a help panel, before Learn is added.",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.ts"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

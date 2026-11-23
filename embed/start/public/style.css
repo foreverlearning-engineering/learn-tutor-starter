@@ -1,0 +1,20 @@
+:root { --bg: #fafaf7; --ink: #1c1d21; --muted: #60636b; --line: #e2e0d8; --accent: #6a3fb5; --soft: #f1ecfa; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); }
+* { box-sizing: border-box; }
+body { margin: 0; }
+.top { display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; border-bottom: 1px solid var(--line); background: #fff; }
+.top strong { color: var(--accent); font-size: 1.1rem; }
+.top span { color: var(--muted); }
+.layout { display: grid; grid-template-columns: 1fr 380px; gap: 24px; max-width: 1100px; margin: 0 auto; padding: 24px; }
+main h1 { margin-top: 0; }
+#problems li { padding: 12px 4px; border-bottom: 1px solid var(--line); font-size: 1.05rem; }
+.help { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; min-height: 70vh; }
+.help h2 { margin: 0 0 12px; font-size: 1.1rem; }
+#help-messages { list-style: none; margin: 0; padding: 0; flex: 1; display: flex; flex-direction: column; gap: 10px; overflow-y: auto; }
+.help-message { padding: 8px 12px; border-radius: 12px; line-height: 1.45; white-space: pre-wrap; }
+.help-message.learner { background: var(--soft); align-self: flex-end; max-width: 90%; }
+.help-message.helper { border: 1px solid var(--line); max-width: 95%; }
+#help-form { display: flex; gap: 8px; margin-top: 12px; }
+#help-form textarea { flex: 1; font: inherit; padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; resize: vertical; }
+#help-form button { font: inherit; border: 0; border-radius: 10px; padding: 0 16px; background: var(--accent); color: #fff; cursor: pointer; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+@media (max-width: 800px) { .layout { grid-template-columns: 1fr; } }

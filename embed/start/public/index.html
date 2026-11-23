@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Practice Pad</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="top">
+    <strong>Practice Pad</strong>
+    <span id="unit"></span>
+  </header>
+  <div class="layout">
+    <main>
+      <h1>Today's practice</h1>
+      <ol id="problems"></ol>
+    </main>
+    <aside class="help" aria-label="Help">
+      <h2>Need a hand?</h2>
+      <ol id="help-messages" aria-live="polite"></ol>
+      <form id="help-form">
+        <label for="help-input" class="visually-hidden">Your question</label>
+        <textarea id="help-input" rows="2" placeholder="Ask about a problem" required></textarea>
+        <button type="submit">Ask</button>
+      </form>
+    </aside>
+  </div>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>
