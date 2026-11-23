@@ -13,3 +13,5 @@ More steps and recipes arrive as each one is verified against the release.
 Keys never go in this repository. Copy a folder's `.env.example` to `.env`, which Git ignores, and put your key there.
 
 You need Node 24 or later, a developer workspace with Learn, and a server key. The integration guide: https://developers.foreverlearning.ai/docs/learn/
+
+License: MIT (see LICENSE)
