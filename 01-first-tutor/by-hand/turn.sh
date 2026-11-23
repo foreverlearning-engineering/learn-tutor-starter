@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Your first tutor with cURL: prepare a session (free), then send one Guided turn
-# and watch Learn's event stream. Needs FOREVERLEARNING_API_KEY and FOREVERLEARNING_BASE_URL.
+# and read the events Learn sends back. Needs FOREVERLEARNING_API_KEY and FOREVERLEARNING_BASE_URL.
 #   bash turn.sh "I am stuck on 3x + 5 = 20. Can you just tell me what x is?"
 set -euo pipefail
 LEARNER="learner-$(date +%s)-$RANDOM$RANDOM"   # pseudonymous: never a name or an email
@@ -21,7 +21,7 @@ SESSION=$(curl -sS "$FOREVERLEARNING_BASE_URL/quest/sessions" \
   | grep -o '"session_id":"[^"]*"' | head -n 1 | cut -d'"' -f4)
 echo "Session: $SESSION"
 
-# 2. Send one Guided turn. The reply streams back as server-sent events:
+# 2. Send one Guided turn. The reply comes back as server-sent events, complete and checked:
 #    metadata, content (conversation, then display), safety_status, quest_receipt, done.
 BODY=$(printf '{"session_id":"%s","prompt":"%s","posture":"guided","quest":{"operation":"turn","requested_support":"auto","team_dialog":false}}' \
   "$SESSION" "$(printf '%s' "$MESSAGE" | sed 's/\\/\\\\/g; s/"/\\"/g')")

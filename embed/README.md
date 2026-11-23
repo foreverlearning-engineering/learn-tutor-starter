@@ -7,7 +7,7 @@ Learn inside the product you already have, in an afternoon. This folder is the f
 | File | Change |
 | --- | --- |
 | `learn.ts` | New: calls Learn (`POST /v1/quest/sessions`, then `POST /v1/chat` for each turn) and accepts a turn only after the final `done` event confirms it. |
-| `learn-route.ts` | New: `POST /api/learn/turn`. Keeps the key, turns your user id into a pseudonymous learner id (a keyed hash), keeps one Learn session per learner, sends the reply to your page as it arrives and keeps every receipt in `receipts.jsonl`. |
+| `learn-route.ts` | New: `POST /api/learn/turn`. Keeps the key, turns your user id into a pseudonymous learner id (a keyed hash), keeps one Learn session per learner, sends the reply to your page when it arrives and keeps every receipt in `receipts.jsonl`. |
 | `public/learn-client.js` | New: a drop-in browser module. `askLearn(message, element)` renders the reply (both parts), the safety status and the receipt into any element. |
 | `server.ts` | One line mounts the route: `app.use('/api/learn', learnRoute)`. |
 | `public/app.js` | The help panel calls `askLearn` instead of the placeholder. |

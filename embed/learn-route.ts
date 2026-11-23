@@ -1,6 +1,6 @@
 // The Learn route for your existing server: POST /api/learn/turn.
 // It keeps the key, maps your user to a pseudonymous learner id, keeps one Learn session
-// per learner, sends the reply to your page as it arrives and keeps every receipt.
+// per learner, sends the reply to your page when it arrives and keeps every receipt.
 import { Router, type Request, type Response } from 'express';
 import { createHmac } from 'node:crypto';
 import { appendFile } from 'node:fs/promises';

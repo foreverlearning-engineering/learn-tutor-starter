@@ -1,6 +1,6 @@
 """Learn inside your own Python server. Python 3.11+, standard library only.
 
-Call stream_turn(user_id, message) from your web framework's route and forward each
+Call send_turn(user_id, message) from your web framework's route and forward each
 ("text", part, text) event to your page, then the ("done", safety, receipt) event.
 
     python learn_embed.py "I'm stuck on 3x + 5 = 20. Can you just tell me what x is?"
@@ -37,7 +37,7 @@ def learner_id_for(user_id):
 def _post(learner, path, body):
     headers = {"Authorization": "Bearer " + KEY, "X-User-Id": learner, "FL-API-Version": "2026-12-01",
                "Content-Type": "application/json", "Idempotency-Key": str(uuid.uuid4()),
-               "User-Agent": "learn-tutor-starter/1.0 (python)"}  # so your requests are easy to recognise
+               "User-Agent": "learn-tutor-starter/1.0 (python)"}  # so your requests are easy to recognize
     if ASSIGNMENT:
         headers["X-Assignment-Id"] = ASSIGNMENT
     request = urllib.request.Request(BASE + path, data=json.dumps(body).encode("utf-8"), headers=headers, method="POST")
@@ -52,7 +52,7 @@ def _post(learner, path, body):
         raise LearnError(f"{error.code} {detail.get('code', '')}: {detail.get('message', '')} (request {detail.get('request_id', '')})")
 
 
-def stream_turn(user_id, message):
+def send_turn(user_id, message):
     """Yield ("text", part, text) as the reply arrives, then ("done", safety, receipt)."""
     learner = learner_id_for(user_id)
     if learner not in SESSIONS:
@@ -97,7 +97,7 @@ def stream_turn(user_id, message):
 
 if __name__ == "__main__":
     sample_user = "u-" + str(uuid.uuid4())  # your product's own user id
-    for event in stream_turn(sample_user, " ".join(sys.argv[1:]) or "I'm stuck on 3x + 5 = 20. Where do I start?"):
+    for event in send_turn(sample_user, " ".join(sys.argv[1:]) or "I'm stuck on 3x + 5 = 20. Where do I start?"):
         if event[0] == "text":
             print(event[2], flush=True)
         else:

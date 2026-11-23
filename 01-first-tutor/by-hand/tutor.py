@@ -26,7 +26,7 @@ def post(path, body):
         "FL-API-Version": "2026-12-01",
         "Content-Type": "application/json",
         "Idempotency-Key": str(uuid.uuid4()),
-        # Send your own User-Agent, so your requests are easy to recognise.
+        # Send your own User-Agent, so your requests are easy to recognize.
         "User-Agent": "learn-tutor-starter/1.0 (python)",
     }
     if ASSIGNMENT:
@@ -50,7 +50,7 @@ def create_session():
 
 
 def send_turn(session_id, prompt):
-    """Send one Guided turn, print the reply as it arrives, and return the receipt."""
+    """Send one Guided turn, print the reply when it arrives, and return the receipt."""
     body = {"session_id": session_id, "prompt": prompt, "posture": "guided",
             "quest": {"operation": "turn", "requested_support": "auto", "team_dialog": False}}
     request_id = safety = quest = commercial = None

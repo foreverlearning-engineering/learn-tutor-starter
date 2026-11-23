@@ -56,7 +56,7 @@ function dollars(micro) {
   return '$' + (micro / 1e6).toFixed(2);
 }
 
-// Read the server's stream: "text" pieces while the reply arrives, then "done" or "failed".
+// Read the server's events: the reply's "text" parts, then "done" or "failed".
 async function* events(response) {
   const reader = response.body.getReader();
   const decoder = new TextDecoder();

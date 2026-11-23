@@ -104,8 +104,8 @@ export interface TurnInput {
   posture?: Posture;
 }
 
-// Send one learner turn and pass on the reply as it arrives. onText receives each piece of the
-// reply as it arrives: the "conversation" part (what the tutor says) and the
+// Send one learner turn and pass on the reply when it arrives. onText receives each part of the
+// reply: the "conversation" part (what the tutor says) and the
 // "display" part (the hint or working to show, in Markdown). The result is returned
 // only after Learn's final "done" event confirms the turn, with its safety status
 // and receipt.
