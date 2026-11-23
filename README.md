@@ -6,6 +6,7 @@ The sample repository for **Build with Learn**: one folder per step and per reci
 | --- | --- | --- |
 | `01-first-tutor` | Step 1: Your first tutor in ten minutes | https://developers.foreverlearning.ai/build/1/ |
 | `02-four-kinds-of-help` | Step 2: The four kinds of help | https://developers.foreverlearning.ai/build/2/ |
+| `03-photos-of-work` | Step 3: Photos of handwritten work | https://developers.foreverlearning.ai/build/3/ |
 | `embed` | Recipe: Embed Learn in your app (`embed/start` is the app before Learn) | https://developers.foreverlearning.ai/build/embed/ |
 
 More steps and recipes arrive as each one is verified against the release.

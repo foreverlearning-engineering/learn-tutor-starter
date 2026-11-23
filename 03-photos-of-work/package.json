@@ -1,0 +1,11 @@
+{
+  "name": "learn-photos-of-work",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Build with Learn, step 3: photos of handwritten work.",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.ts"
+  }
+}
