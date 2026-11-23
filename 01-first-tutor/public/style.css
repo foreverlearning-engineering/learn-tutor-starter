@@ -43,3 +43,5 @@ code { font-family: ui-monospace, Consolas, monospace; background: #f0efe9; padd
 #composer button { font: inherit; padding: 0 18px; border: 0; border-radius: 10px; background: var(--accent); color: #fff; cursor: pointer; }
 #composer button:disabled { opacity: 0.5; cursor: default; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.heading { margin: 8px 0 4px; }
+.katex { font-size: 1.05em; }

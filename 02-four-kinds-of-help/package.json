@@ -1,0 +1,11 @@
+{
+  "name": "learn-four-kinds-of-help",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Build with Learn, step 2: the four kinds of help.",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.ts"
+  }
+}

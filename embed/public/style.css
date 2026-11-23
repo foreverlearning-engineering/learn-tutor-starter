@@ -29,3 +29,5 @@ main h1 { margin-top: 0; }
 .learn-meta .learn-safety-warning, .learn-meta .learn-safety-critical, .learn-meta .learn-safety-unknown { background: #f8e3da; color: #a1122b; }
 .learn-waiting::after { content: "Thinking…"; color: var(--muted); font-size: 0.9rem; }
 code { font-family: ui-monospace, Consolas, monospace; background: #f3f1ec; padding: 0 4px; border-radius: 4px; }
+.heading { margin: 8px 0 4px; }
+.katex { font-size: 1.05em; }

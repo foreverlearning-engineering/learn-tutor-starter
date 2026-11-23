@@ -16,9 +16,19 @@ function inline(text) {
     .replace(/(^|[^*])\*([^*\s][^*]*)\*/g, '$1<em>$2</em>');
 }
 function markdown(text) {
+  // Keep each display-math block (\[ ... \], often over several lines) together in one
+  // paragraph, so the math library finds both delimiters.
+  const blocks = [];
+  text = text.replace(/\\\[[\s\S]*?\\\]/g, (block) => '\u0000' + (blocks.push(block) - 1) + '\u0000');
   const html = [];
   let list = null;
   for (const line of text.split('\n')) {
+    const heading = /^\s*#{1,6}\s+(.*)$/.exec(line);
+    if (heading) {
+      if (list) { html.push('</' + list + '>'); list = null; }
+      html.push('<p class="heading"><strong>' + inline(heading[1]) + '</strong></p>');
+      continue;
+    }
     const item = /^\s*(?:[-*]|(\d+)[.)])\s+(.*)$/.exec(line);
     if (item) {
       const kind = item[1] ? 'ol' : 'ul';
@@ -30,7 +40,16 @@ function markdown(text) {
     if (line.trim()) html.push('<p>' + inline(line) + '</p>');
   }
   if (list) html.push('</' + list + '>');
-  return html.join('');
+  return html.join('').replace(/\u0000(\d+)\u0000/g, (_, i) => escape(blocks[Number(i)]));
+}
+
+// Math in a reply (\( \) inline, \[ \] on its own line), rendered by KaTeX's auto-render,
+// loaded in index.html. Without it the learner would see the raw notation.
+function typeset(element) {
+  window.renderMathInElement?.(element, {
+    delimiters: [{ left: '\\(', right: '\\)', display: false }, { left: '\\[', right: '\\]', display: true }],
+    throwOnError: false,
+  });
 }
 
 function add(role, text) {
@@ -102,9 +121,11 @@ form.addEventListener('submit', async (submit) => {
       if (event === 'text' && data.part === 'conversation') {
         conversation += data.text;
         said.innerHTML = inline(conversation);
+        typeset(said);
       } else if (event === 'text' && data.part === 'display') {
         display += data.text;
         board.innerHTML = markdown(display);
+        typeset(board);
       } else if (event === 'done') {
         const meta = document.createElement('div');
         meta.className = 'meta';
