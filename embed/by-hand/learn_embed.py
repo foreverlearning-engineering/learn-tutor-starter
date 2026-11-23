@@ -53,7 +53,7 @@ def _post(learner, path, body):
 
 
 def send_turn(user_id, message):
-    """Yield ("text", part, text) as the reply arrives, then ("done", safety, receipt)."""
+    """Yield ("text", part, text) when the reply arrives, then ("done", safety, receipt)."""
     learner = learner_id_for(user_id)
     if learner not in SESSIONS:
         with _post(learner, "/quest/sessions", {"setup": SETUP}) as response:
