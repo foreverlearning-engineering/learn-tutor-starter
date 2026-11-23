@@ -1,3 +1,4 @@
 .env
 receipts.jsonl
 node_modules/
+data/
