@@ -1,0 +1,11 @@
+{
+  "name": "learn-safety-status",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Build with Learn, step 5: show the safety status.",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.ts"
+  }
+}

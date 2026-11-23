@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Safety status</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="chat">
+    <header>
+      <h1>Your tutor</h1>
+      <p>Pick up where you left off. Finish for today when you're done, and next time starts from there.</p>
+    </header>
+    <section id="last-time" class="last-time" hidden>
+      <h2>Last time</h2>
+      <div id="last-summary"></div>
+      <ul id="remembered"></ul>
+    </section>
+    <ol id="messages" aria-live="polite"></ol>
+    <form id="composer">
+      <fieldset class="kinds">
+        <legend class="visually-hidden">Kind of help</legend>
+        <label><input type="radio" name="kind" value="guided" checked> <span><strong>Guided</strong> I'm working on it</span></label>
+        <label><input type="radio" name="kind" value="feedback"> <span><strong>Feedback</strong> Check my work</span></label>
+        <label><input type="radio" name="kind" value="explain"> <span><strong>Explain</strong> A worked example I don't follow</span></label>
+        <label><input type="radio" name="kind" value="diagnostic"> <span><strong>Diagnostic</strong> I finished a quiz</span></label>
+      </fieldset>
+      <div class="attach">
+        <label class="attach-button">Attach a photo of your work <input id="photos" type="file" accept="image/png,image/jpeg,image/webp" multiple></label>
+        <ul id="thumbs"></ul>
+      </div>
+      <label for="message" class="visually-hidden">Your message</label>
+      <textarea id="message" name="message" rows="2" placeholder="Type your question" required></textarea>
+      <div class="actions">
+        <button type="submit">Send</button>
+        <button type="button" id="finish" class="secondary">Finish for today</button>
+      </div>
+    </form>
+  </main>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>

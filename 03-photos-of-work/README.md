@@ -17,4 +17,4 @@ npm start
 
 Open http://localhost:3000, choose **Feedback**, attach a photo of written work and ask for a check. The reply speaks to the lines in the photo.
 
-Starts from step 2 (`02-four-kinds-of-help`).
+Starts from step 2 (`02-four-kinds-of-help`). Next: step 4, **Remember the learner**.
