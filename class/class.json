@@ -1,0 +1,7 @@
+{
+  "tutor_name": "Maple",
+  "welcome": "Bring the problem you're on and what you've tried. Ask when you're stuck; submit your work when you want it checked.",
+  "course": "Algebra 1 (adult education)",
+  "assignment": "Solve linear equations in one variable. Show each step.",
+  "colors": { "accent": "#2d6a4f", "background": "#f3f6f1" }
+}

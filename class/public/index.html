@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Class tutor</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="chat">
+    <header>
+      <h1 id="tutor-name">Class tutor</h1>
+      <p id="course"></p>
+    </header>
+    <form id="sign-in" hidden>
+      <p id="welcome"></p>
+      <label>Class code <input id="class-code" name="class_code" autocomplete="off" required></label>
+      <label>Your sign-in (not your full name) <input id="handle" name="handle" autocomplete="username" required></label>
+      <button type="submit">Sign in</button>
+      <p id="sign-in-error" class="error-text" role="alert"></p>
+    </form>
+    <section id="chat" hidden>
+      <p class="signed-in">Signed in as <strong id="who"></strong> · <button type="button" id="sign-out" class="link">Sign out</button></p>
+      <ol id="messages" aria-live="polite"></ol>
+      <form id="composer">
+        <label for="message" class="visually-hidden">Your message</label>
+        <textarea id="message" name="message" rows="3" placeholder="Ask a question, or paste your work and submit it" required></textarea>
+        <div class="actions">
+          <button type="submit" id="ask">Ask</button>
+          <button type="button" id="submit-work" class="secondary">Submit my work</button>
+        </div>
+      </form>
+    </section>
+  </main>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>
